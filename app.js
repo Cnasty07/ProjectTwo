@@ -31,7 +31,7 @@ app.set("views",__dirname  + "/views")
 app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(express.static("public"))
+app.use(express.static(__dirname + "/public/"))
 app.use('/public', express.static('public'));
 
 // const port = 5500
