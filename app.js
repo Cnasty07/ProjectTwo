@@ -27,6 +27,7 @@ const placeholderNews = [
 
 //express engine
 const app = express()
+app.set("views",__dirname  + "/views")
 app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({extended: true}))
