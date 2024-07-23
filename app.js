@@ -4,6 +4,7 @@ const ejs = require('ejs')
 // const espn_api = require('./src/Espn_apis/get_news')
 const get_news_stored = require("./src/database_fetch/db_get_news")
 const mongoose = require("mongoose");
+const { modelName } = require('./models/news_db');
 
 
 
@@ -92,3 +93,5 @@ app.get('/search', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+module.exports = app;
