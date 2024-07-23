@@ -19,6 +19,7 @@
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.1",
     "nodemon": "^3.1.4",
+    "vercel": "^35.1.0",
     "watch": "^1.0.2"
   },
   "description": "- by Chris Nastasi, Ruben Reyes, & David Abundis"
