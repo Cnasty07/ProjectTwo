@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static("public"))
 app.use('/public', express.static('public'));
 
-const port = 5500
+// const port = 5500
 
 
 app.get('/', async (req, res) => {
@@ -91,8 +91,8 @@ app.get('/search', (req, res) => {
   res.json({ results });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`)
+// })
 
-// module.exports = app;
+module.exports = app;
