@@ -53,6 +53,7 @@ app.get('/', async (req, res) => {
     
   }
   console.log(nfl_news)
+  mongoose.connection.close()
   try {
       const nflNews = nfl_news;
       const nbaNews = nba_news;
