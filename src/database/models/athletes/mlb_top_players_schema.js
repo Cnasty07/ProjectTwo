@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const EPSN_API = require("../../src/Espn_apis/get_news")
 
 const Top_Players = new Schema({
     offensive: {

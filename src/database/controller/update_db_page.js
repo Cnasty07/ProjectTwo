@@ -1,14 +1,13 @@
 const mongoose = require("mongoose")
-// const NFL_PAGE = require("../models/pages/nfl_page_db")
 const espn = require("../../Espn_apis/fetch_wrapper")
 const NEWS = require("../models/pages/news_page_schema")
 const NFL = require("../models/pages/nfl_page_db")
-// const NBA = require("../models/pages/nba_page_schema")
-// const MLB = require("../models/pages/mlb_page_schema")
+const NBA = require("../models/pages/nba_page__schema")
+const MLB = require("../models/pages/mlb_page_schema")
 
 
-const dburi = "mongodb+srv://cn:12345web@web-dev-db.fhkedej.mongodb.net/?retryWrites=true&w=majority&appName=web-dev-db"
-mongoose.connect(dburi).then(() => console.log("connected"))
+// const dburi = "mongodb+srv://cn:12345web@web-dev-db.fhkedej.mongodb.net/?retryWrites=true&w=majority&appName=web-dev-db"
+// mongoose.connect(dburi).then(() => console.log("connected"))
 
 // update home news
 async function update_home_news() {
@@ -119,11 +118,177 @@ async function create_init() {
     // })
     // console.log(nfl_init)
 
-    //
+    //nba
+    // let nba_init = await NBA.create({
+    //     all_team_stats: [{
+    //         team_id: 100,
+    //             team_name: "Temp",
+    //             team_record: {
+    //                 wins: 1,
+    //                 losses: 1,
+    //                 alt: 0
+    //             }
+    //     }], // array of single teams
+    //     top_team: {
+    //         team_id: 100,
+    //             team_name: "Temp",
+    //             team_record: {
+    //                 wins: 1,
+    //                 losses: 1,
+    //                 alt: 0
+    //             }
+    //     }, // only one team(top called)
+    //     top_players: {
+    //         offensive: {
+    //             points: {
+    //                 name: "tempNBA",
+    //                 pts: 50
+    //             },
+    //             assists: {
+    //                 name: "tempa",
+    //                 ast: 11
+    //             },
+    //             threepointersmade: {
+    //                 name: "Curry",
+    //                 threepointers: 30
+    //             }
+    //         },
+    //         defensive: {
+    //             rebounds: {
+    //                 name: "vic",
+    //                 reb: 40,
+    //             },
+    //             blocks: {
+    //                 name: "wemby",
+    //                 blk: 20
+    //             },
+    //             steals: {
+    //                 name: "lebron",
+    //                 stl: 100
+    //             },
+    //         }
+    //     }, // 
+    //     top_team_players_stats: {
+    //         offense: ["tempOf",100],
+    //         defense: ["tempDef",100]
+    //     }
+    // })
+    // mlb
+    // const MLB_init = await MLB.create({
+    //     all_team_stats: [{
+    //         team_id: 1,
+    //         team_name: "tempname",
+    //         team_record: {
+    //             wins: 1,
+    //             losses: 0,
+    //             alt: 1
+    //         }
+    //     }],
+    //     top_team_stats: {
+    //         team_id: 1,
+    //         team_name: "tempname",
+    //         team_record: {
+    //             wins: 1,
+    //             losses: 0,
+    //             alt: 1
+    //         }
+    //     },
+    //     top_player_stats: {
+    //         offensive: {
+    //             batting_avg: {
+    //                 name: "tempbat",
+    //                 avg: 1,
+    //             },
+    //             home_runs: {
+    //                 name: "temphr",
+    //                 hr: 10
+    //             },
+    //             runs_in: {
+    //                 name: "tempRI",
+    //                 rbi: 30
+    //             }
+    //         },
+    //         defensive: {
+    //             wins: {
+    //                 name: "temppitchwins",
+    //                 w: 23,
+    //             },
+    //             earned_run_avg: {
+    //                 name: "tempERA",
+    //                 era: 30
+    //             },
+    //             saves: {
+    //                 name: "tempsave",
+    //                 sv: 20
+    //             },
+    //         }
+    //     },
+    //     top_team_player_stats: {
+    //         offense: ["tempof",100],
+    //         defense: ["tempdef",20]
+    //     }
+    // })
 }
 
 async function update_mlb_page() {
+    //fetch all new updates
 
+    // add to db
+
+    // const MLB_update = await MLB.findOne({_id:1})({
+    //     all_team_stats: [{
+    //         team_id: 1,
+    //         team_name: "tempname",
+    //         team_record: {
+    //             wins: 1,
+    //             losses: 0,
+    //             alt: 1
+    //         }
+    //     }],
+    //     top_team_stats: {
+    //         team_id: 1,
+    //         team_name: "tempname",
+    //         team_record: {
+    //             wins: 1,
+    //             losses: 0,
+    //             alt: 1
+    //         }
+    //     },
+    //     top_player_stats: {
+    //         offensive: {
+    //             batting_avg: {
+    //                 name: "tempbat",
+    //                 avg: 1,
+    //             },
+    //             home_runs: {
+    //                 name: "temphr",
+    //                 hr: 10
+    //             },
+    //             runs_in: {
+    //                 name: "tempRI",
+    //                 rbi: 30
+    //             }
+    //         },
+    //         defensive: {
+    //             wins: {
+    //                 name: "temppitchwins",
+    //                 w: 23,
+    //             },
+    //             earned_run_avg: {
+    //                 name: "tempERA",
+    //                 era: 30
+    //             },
+    //             saves: {
+    //                 name: "tempsave",
+    //                 sv: 20
+    //             },
+    //         }
+    //     },
+    //     top_team_player_stats: {
+    //         offense: ["tempof",100],
+    //         defense: ["tempdef",20]
+    //     }
+    // })
 }
 
 async function update_nba_page() {
@@ -131,7 +296,6 @@ async function update_nba_page() {
 }
 
 async function start_auto_update() {
-    mongoose.connect(dburi).then(() => console.log("connected"))
     // setInterval(async () => {
     //     let sports = [["football","nfl","2023"],["baseball","mlb","2024"],["basketball","nba","2024"]]
     //     let news = await update_home_news()
@@ -148,9 +312,9 @@ async function start_auto_update() {
 }
 
 async function main() {
-    mongoose.connect(dburi).then(() => console.log("connected"))
+    // mongoose.connect(dburi).then(() => console.log("connected")) // comment out when deploying
     // await update_nfl_page()
-    // await create_init()
+    await create_init()
     // await update_home_news() // update news works
     mongoose.connection.close()
 }

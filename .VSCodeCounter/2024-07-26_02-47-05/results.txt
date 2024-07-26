@@ -1,0 +1,78 @@
+Date : 2024-07-26 02:47:05
+Directory : /Users/christophernastasi/Documents/GitHub/ProjectTwo
+Total : 33 files,  5653 codes, 342 comments, 236 blanks, all 6231 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          3 |      4,069 |          0 |          2 |      4,071 |
+| JavaScript |         20 |        868 |        337 |        162 |      1,367 |
+| HTML       |          8 |        613 |          5 |         48 |        666 |
+| CSS        |          1 |         93 |          0 |         16 |        109 |
+| Markdown   |          1 |         10 |          0 |          8 |         18 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                   | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                      |         33 |      5,653 |        342 |        236 |      6,231 |
+| . (Files)                                                                                                              |          5 |      4,188 |         15 |         29 |      4,232 |
+| public                                                                                                                 |          2 |        120 |          0 |         19 |        139 |
+| src                                                                                                                    |         18 |        732 |        322 |        140 |      1,194 |
+| src/Espn_apis                                                                                                          |          4 |        230 |         28 |         49 |        307 |
+| src/Espn_apis (Files)                                                                                                  |          1 |         40 |          8 |         21 |         69 |
+| src/Espn_apis/get                                                                                                      |          3 |        190 |         20 |         28 |        238 |
+| src/database                                                                                                           |         14 |        502 |        294 |         91 |        887 |
+| src/database/controller                                                                                                |          5 |        194 |        273 |         61 |        528 |
+| src/database/models                                                                                                    |          9 |        308 |         21 |         30 |        359 |
+| src/database/models/athletes                                                                                           |          3 |        100 |          3 |          7 |        110 |
+| src/database/models/pages                                                                                              |          4 |        189 |         18 |         18 |        225 |
+| src/database/models/teams                                                                                              |          2 |         19 |          0 |          5 |         24 |
+| src/database/models/teams (Files)                                                                                      |          1 |          7 |          0 |          3 |         10 |
+| src/database/models/teams/all_teams                                                                                    |          1 |         12 |          0 |          2 |         14 |
+| views                                                                                                                  |          8 |        613 |          5 |         48 |        666 |
+| views (Files)                                                                                                          |          4 |        557 |          4 |         44 |        605 |
+| views/reusables                                                                                                        |          4 |         56 |          1 |          4 |         61 |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                               | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/README.md                                                        | Markdown   |         10 |          0 |          8 |         18 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/app.js                                                           | JavaScript |        109 |         15 |         19 |        143 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/package-lock.json                                                | JSON       |      4,028 |          0 |          1 |      4,029 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/package.json                                                     | JSON       |         26 |          0 |          1 |         27 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/public/script.js                                                 | JavaScript |         27 |          0 |          3 |         30 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/public/styles.css                                                | CSS        |         93 |          0 |         16 |        109 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/Espn_apis/fetch_wrapper.js                                   | JavaScript |         40 |          8 |         21 |         69 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/Espn_apis/get/get_news.js                                    | JavaScript |         41 |          7 |          6 |         54 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/Espn_apis/get/get_stats.js                                   | JavaScript |        115 |          9 |         13 |        137 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/Espn_apis/get/get_teams.js                                   | JavaScript |         34 |          4 |          9 |         47 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/controller/db_get_news.js                           | JavaScript |         32 |          2 |         14 |         48 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/controller/db_teams_creation.js                     | JavaScript |         43 |         10 |          9 |         62 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/controller/get_top_players.js                       | JavaScript |         60 |          4 |         10 |         74 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/controller/test.js                                  | JavaScript |          6 |          6 |          5 |         17 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/controller/update_db_page.js                        | JavaScript |         53 |        251 |         23 |        327 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/models/athletes/mlb_top_players_schema.js           | JavaScript |         33 |          1 |          2 |         36 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/models/athletes/nba_top_players_schema.js           | JavaScript |         34 |          1 |          2 |         37 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/models/athletes/nfl_top_players_schema.js           | JavaScript |         33 |          1 |          3 |         37 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/models/pages/mlb_page_schema.js                     | JavaScript |         60 |          7 |          4 |         71 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/models/pages/nba_page__schema.js                    | JavaScript |         58 |          7 |          4 |         69 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/models/pages/news_page_schema.js                    | JavaScript |          9 |          0 |          5 |         14 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/models/pages/nfl_page_db.js                         | JavaScript |         62 |          4 |          5 |         71 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/models/teams/all_teams/single_team_record_schema.js | JavaScript |         12 |          0 |          2 |         14 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/src/database/models/teams/top_team_players_schema.js             | JavaScript |          7 |          0 |          3 |         10 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/vercel.json                                                      | JSON       |         15 |          0 |          0 |         15 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/views/home.ejs                                                   | HTML       |         38 |          0 |          5 |         43 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/views/mlb.ejs                                                    | HTML       |        179 |          1 |         14 |        194 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/views/nba.ejs                                                    | HTML       |        178 |          2 |         13 |        193 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/views/nfl.ejs                                                    | HTML       |        162 |          1 |         12 |        175 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/views/reusables/footer.ejs                                       | HTML       |         14 |          0 |          1 |         15 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/views/reusables/githubLogo.ejs                                   | HTML       |          5 |          0 |          0 |          5 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/views/reusables/header.ejs                                       | HTML       |         31 |          1 |          2 |         34 |
+| /Users/christophernastasi/Documents/GitHub/ProjectTwo/views/reusables/search.ejs                                       | HTML       |          6 |          0 |          1 |          7 |
+| Total                                                                                                                  |            |      5,653 |        342 |        236 |      6,231 |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
