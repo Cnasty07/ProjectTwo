@@ -114,7 +114,7 @@ app.get('/mlb', async (req, res) => {
     let temp_team_player_stats = new_page.top_team_player_stats // make sure to update whole array is added
     let temp_top_team_stats = new_page.top_team_stats
     let temp_top_players = new_page.top_player_stats
-    let temp_all_teams = new_page.all_team_stats
+    let temp_all_teams = new_page.all_team_stats.slice(0,3)
     res.render('mlb', { stats, temp_team_player_stats,temp_top_team_stats,temp_top_players ,temp_all_teams});
     
   } catch (error) {

@@ -15,7 +15,7 @@ const nfl = new Schema({
         team_record: {
             wins: Number,
             losses: Number,
-            alt: Number
+            ties: Number
         }
     }], // gets array of single nfl teams
     top_player_stats: [{
@@ -54,7 +54,7 @@ const nfl = new Schema({
         team_record: {
             wins: Number,
             losses: Number,
-            alt: Number
+            ties: Number
         }
     },
     top_team_player_stats: {

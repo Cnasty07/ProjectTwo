@@ -23,17 +23,20 @@ async function fetch_update_all_teams(sport,league){
     return new_teams
 }
 // inputs sport and league and gets the top team record based on season
-async function fetch_top_team_records(sport,league){
+async function fetch_update_top_team_records(sport,league){
     let new_records = await get_all_stats.fetch_top_team_record(sport,league)
     return new_records
 }
-
-async function fetch_all_teams_and_records() {
-    
+async function update_top_team_players(sport,league){
+    return await get_all_stats.fetch_top_team_top_player(sport,league)
+}
+async function fetch_update_all_teams_records(sport,league) {
+    return get_all_stats.fetch_all_team_records(sport,league)
 }
 
-async function fetch_update_top_sport_players(sport,league) {
-    let new_top_players = await get_all_stats.fetch_top_sport_player(sport,league) 
+
+async function fetch_update_top_sport_players(sport,league,year) {
+    let new_top_players = await get_all_stats.fetch_top_sport_player(sport,league,year) 
     return new_top_players
 }
 
@@ -64,6 +67,8 @@ module.exports = {
     update_stats,
     fetch_update_all_teams,
     fetch_update_top_sport_players,
-    fetch_top_team_records,
+    fetch_update_all_teams_records,
+    fetch_update_top_team_records,
+    update_top_team_players
 
 }
