@@ -4,9 +4,7 @@
 
 # IMPORTANT
 
--  I (chris am currently finishing changes so it is not done. Please come back in the morning as I will be doing it overnight.)
-
-
+- Problems fixed except for search bar and some front end layouts. If youre coming from the blackboard submission comment. disregard its fixed.
 
 ## Description
 
