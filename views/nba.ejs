@@ -28,18 +28,18 @@
                                         <th>Team</th>
                                         <th>W</th>
                                         <th>L</th>
-                                        <th>PCT</th>
+                                        <th>W.PCT</th>
                                     </thead>
                                     <tbody>
-                                        <tr>
-
-                                            <% temp_all_teams.forEach(function(team) { %>
+                                        
+                                        <% temp_all_teams.forEach(function(team) { %>
+                                            <tr>
                                                 <td><%= team.team_name %></td>
                                                 <td><%= team.team_record.wins %></td>
                                                 <td><%= team.team_record.losses %></td>
                                                 <td><%= team.team_record.alt %></td>
+                                            </tr>
                                             <% }) %>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

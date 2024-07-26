@@ -69,3 +69,62 @@ const nfl = new Schema({
 /* */
 
 module.exports = mongoose.model("NFL_DB",nfl)
+
+
+// data to add if needed to recreate
+
+// console.log(nfl_page)
+// let nfl_page = await NFL.create({
+//     all_team_stats: [{
+//         team_id: 100,
+//         team_name: "Temp_name",
+//         team_record: {
+//             wins: 1,
+//             losses: 1,
+//             ties: 0
+//         }
+//     }], // gets array of single nfl teams
+//     top_player_stats: {
+//         offensive: {
+//             passing: {
+//                 name: "Temp1",
+//                 yards: 100
+//             },
+//             rushing: {
+//                 name: "rtemp1",
+//                 yards: 1002
+//             },
+//             receiving: {
+//                 name: "retemp1",
+//                 yards: 870
+//             }
+//         },
+//         defensive: {
+//             tackles: {
+//                 name: "ttemp1",
+//                 tackles: 100,
+//             },
+//             sacks: {
+//                 name: "stemp1",
+//                 sacks: 20
+//             },
+//             interceptions: {
+//                 name: "itemp1",
+//                 int: 10
+//             }
+//         }
+//     }, // gets top 6 players
+//     top_team_stats: {
+//         team_id: 100,
+//         team_name: "Temp_name",
+//         team_record: {
+//             wins: 1,
+//             losses: 1,
+//             ties: 0
+//         }
+//     },
+//     top_team_player_stats: {
+//         offense: ["tempnameof",100],
+//         defense: ["tempnamedef",99]
+//     },
+//     });

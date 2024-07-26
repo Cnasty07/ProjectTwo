@@ -43,14 +43,22 @@ async function fetch_athlete(ref) {
 }
 // gets the top team 
 async function fetch_top_team(sport,league) {
-    // gets the top team from post season but needs to be updated  to reflect weekly standings overall
-    let fetch_team = await fetch(`https://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2023/types/3/groups/9/standings/3?lang=en&region=us`).then(response => {return response.json()}).then(data => {return data.standings[0]})
+    let fetch_team;
+    if (sport == "basketball") {
+
+        fetch_team = await fetch(`https://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2024/types/2/groups/9/standings/3?lang=en&region=us`).then(response => {return response.json()}).then(data => {return data.standings[0]})
+    } else {
+
+        // gets the top team from post season but needs to be updated  to reflect weekly standings overall
+        fetch_team = await fetch(`https://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2023/types/3/groups/9/standings/3?lang=en&region=us`).then(response => {return response.json()}).then(data => {return data.standings[0]})
+    }
     let fetch_top = await fetch(fetch_team.team["$ref"]).then(response => {return response.json()}).then(data => {return data})
     return fetch_top
 }
 
 // gets the top team players from top team function
 async function fetch_top_team_top_player(sport,league) {
+    console.log("func reached")
     let top_team = await fetch_top_team(sport,league)
     let fetch_team_top = await fetch(`https://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2023/types/2/teams/${top_team.id}/leaders`).then(response => {return response.json()}).then((data) => {return data})
     let offense_player,defense_player;
@@ -78,6 +86,7 @@ async function fetch_top_team_top_player(sport,league) {
 async function fetch_all_team_records(sport, league) {
     let all_team_array = []
     let season_teams = await fetch(`https://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2023/teams`).then((response)  => {return response.json()}).then(data => {return data})
+    
     for (let index = 1; index <= season_teams.count + 2; index++) { // goes from 1-34 but skips 32
         if (index == season_teams.count) {
             continue
@@ -85,11 +94,24 @@ async function fetch_all_team_records(sport, league) {
         if (index == season_teams.count - 1) {
             continue
         }
+        if (sport == "basketball"){
+            if (index > 30)
+            {
+                break
+            }
+        }
         // single
         let single_team = await fetch(`http://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2023/teams/${index}?lang=en&region=us`).then(response => {return response.json()}).then(data => {return data})
         console.log(single_team.id)
         let team_record = await fetch(`http://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2023/types/2/teams/${single_team.id}/record?lang=en&region=us`).then(response => { return response.json() }).then((data) => { return data.items })
-
+        if (team_record == 'undefined'){
+            continue
+        }
+        
+        if (season_teams === undefined ){
+            continue
+        }
+        console.log(single_team.name)
         let win = team_record[0].stats.find((element) => element.name === "wins")
         let losses = team_record[0].stats.find((element) => element.name === "losses")
         // console.log(`wins  ${win}`)
@@ -101,12 +123,12 @@ async function fetch_all_team_records(sport, league) {
                 team_record: { 
                     wins: win.value,
                     losses: losses.value,
-                    winPercent: winPercent.value
+                    alt: winPercent.value
                 }
             })
         }
         else {
-            let ties = team_record[0].stats.find((element) => element.name === "ties") // going to have to change this for baseball and basketball     
+            let ties = team_record[0].stats.find((element) => element.name === "ties") // for football only ties
             all_team_array.push({
                 team_id: single_team.id,
                 team_name: single_team.name,
@@ -126,7 +148,15 @@ async function fetch_all_team_records(sport, league) {
 // gets top team -> then fetchs record
 async function fetch_top_team_record(sport,league) {
     let fetch_t_team = await fetch_top_team(sport,league)
-    let team_record = await fetch(`http://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2023/types/2/teams/${fetch_t_team.id}/record?lang=en&region=us`).then(response => {return response.json()}).then((data) => {return data.items})
+    console.log("output")
+    let team_record;
+    if (sport == "football") {
+        team_record = await fetch(`http://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2023/types/2/teams/${fetch_t_team.id}/record?lang=en&region=us`).then(response => {return response.json()}).then((data) => {return data.items})
+        
+    } else {
+
+        team_record = await fetch(`http://sports.core.api.espn.com/v2/sports/${sport}/leagues/${league}/seasons/2024/types/2/teams/${fetch_t_team.id}/record?lang=en&region=us`).then(response => {return response.json()}).then((data) => {return data.items})
+    }
     
     let win = team_record[0].stats.find((element) => element.name === "wins")
     let losses = team_record[0].stats.find((element) => element.name === "losses")

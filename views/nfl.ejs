@@ -30,7 +30,7 @@
                                         <th>L</th>
                                         <th>T</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="table-group-divider">
                                         <% temp_all_teams.forEach(function(team) { %>
                                         <tr>
 
@@ -84,6 +84,7 @@
                                         <td><%= temp_top_players.offensive.receiving.yards %></td>
                                         
                                     </tr>
+                                    <tbody class="table-group-divider">
                                     <tr>
                                         <th>Tackles</th>
                                         <td><%= temp_top_players.defensive.tackles.name %></td>
@@ -165,7 +166,7 @@
                                         <th>Name</th>
                                         <th>Total</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="table-group-divider">
                                         <tr>
                                             <th>Offense</th>
                                             <td class="text-dark"><%= temp_team_player_stats.offense[0] %></td>

@@ -6,8 +6,8 @@ const NBA = require("../models/pages/nba_page__schema")
 const MLB = require("../models/pages/mlb_page_schema")
 
 
-const dburi = "mongodb+srv://cn:12345web@web-dev-db.fhkedej.mongodb.net/?retryWrites=true&w=majority&appName=web-dev-db"
-mongoose.connect(dburi).then(() => console.log("connected"))
+// const dburi = "mongodb+srv://cn:12345web@web-dev-db.fhkedej.mongodb.net/?retryWrites=true&w=majority&appName=web-dev-db"
+// mongoose.connect(dburi).then(() => console.log("connected"))
 
 // update home news
 async function update_home_news() {
@@ -59,104 +59,104 @@ async function update_nfl_page(){
     }})
     console.log(update_top_team_playerss)
     // get top players
-    // let update_top_players = await espn.fetch_update_top_sport_players("football","nfl",2023)
-    // console.log(update_top_players)
-    // const nfl_top_players = await NFL.findOneAndUpdate({},{top_player_stats: {
-    //     offensive: {
-    //         passing: {
-    //             name: update_top_players.offense[0][0],
-    //             yards: update_top_players.offense[0][1]
-    //         },
-    //         rushing: {
-    //             name: update_top_players.offense[1][0],
-    //             yards: update_top_players.offense[1][1],
-    //         },
-    //         receiving: {
-    //             name: update_top_players.offense[2][0],
-    //             yards: update_top_players.offense[2][1]
-    //         }
-    //     },
-    //     defensive: {
-    //         tackles: {
-    //             name: update_top_players.defense[0][0],
-    //             tackles: update_top_players.defense[0][1]
-    //         },
-    //         sacks: {
-    //             name: update_top_players.defense[1][0],
-    //             sacks: update_top_players.defense[1][1]
-    //         },
-    //         interceptions: {
-    //             name: update_top_players.defense[2][0],
-    //             int: update_top_players.defense[2][1]
-    //         },
-    //     }
-    // }});
+    let update_top_players = await espn.fetch_update_top_sport_players("football","nfl",2023)
+    console.log(update_top_players)
+    const nfl_top_players = await NFL.findOneAndUpdate({},{top_player_stats: {
+        offensive: {
+            passing: {
+                name: update_top_players.offense[0][0],
+                yards: update_top_players.offense[0][1]
+            },
+            rushing: {
+                name: update_top_players.offense[1][0],
+                yards: update_top_players.offense[1][1],
+            },
+            receiving: {
+                name: update_top_players.offense[2][0],
+                yards: update_top_players.offense[2][1]
+            }
+        },
+        defensive: {
+            tackles: {
+                name: update_top_players.defense[0][0],
+                tackles: update_top_players.defense[0][1]
+            },
+            sacks: {
+                name: update_top_players.defense[1][0],
+                sacks: update_top_players.defense[1][1]
+            },
+            interceptions: {
+                name: update_top_players.defense[2][0],
+                int: update_top_players.defense[2][1]
+            },
+        }
+    }});
 
-    // let update_team_records = await espn.fetch_update_all_teams_records("football","nfl") // gets all team array
-    // console.log(update_team_records)
-    // let nfl_page = await NFL.findOneAndUpdate({},{all_team_stats: update_team_records})
-    // console.log(nfl_page)
-    // let nfl_page = await NFL.create({
-    //     all_team_stats: [{
-    //         team_id: 100,
-    //         team_name: "Temp_name",
-    //         team_record: {
-    //             wins: 1,
-    //             losses: 1,
-    //             ties: 0
-    //         }
-    //     }], // gets array of single nfl teams
-    //     top_player_stats: {
-    //         offensive: {
-    //             passing: {
-    //                 name: "Temp1",
-    //                 yards: 100
-    //             },
-    //             rushing: {
-    //                 name: "rtemp1",
-    //                 yards: 1002
-    //             },
-    //             receiving: {
-    //                 name: "retemp1",
-    //                 yards: 870
-    //             }
-    //         },
-    //         defensive: {
-    //             tackles: {
-    //                 name: "ttemp1",
-    //                 tackles: 100,
-    //             },
-    //             sacks: {
-    //                 name: "stemp1",
-    //                 sacks: 20
-    //             },
-    //             interceptions: {
-    //                 name: "itemp1",
-    //                 int: 10
-    //             }
-    //         }
-    //     }, // gets top 6 players
-    //     top_team_stats: {
-    //         team_id: 100,
-    //         team_name: "Temp_name",
-    //         team_record: {
-    //             wins: 1,
-    //             losses: 1,
-    //             ties: 0
-    //         }
-    //     },
-    //     top_team_player_stats: {
-    //         offense: ["tempnameof",100],
-    //         defense: ["tempnamedef",99]
-    //     },
-    //     });
+    let update_team_records = await espn.fetch_update_all_teams_records("football","nfl") // gets all team array
+    console.log(update_team_records)
+    let nfl_page = await NFL.findOneAndUpdate({},{all_team_stats: update_team_records})
     } catch (error) {
         console.log(error)
     }
 }
 async function update_mlb_page() {
     //fetch all new updates
+    try {
+        // get top team
+        let update_top_team = await espn.fetch_update_top_team_records("baseball","mlb")
+        // console.log(update_top_team.team_name)
+        let update_mlb_top_team = await MLB.findOneAndUpdate({},{top_team_stats: update_top_team})
 
+        // get top team players
+        let update_top_team_players = await espn.update_top_team_players("baseball", "mlb")
+        console.log(update_top_team_players)
+        const update_top_team_playerss = await MLB.findOneAndUpdate({}, {
+            top_team_player_stats: {
+                offense: [update_top_team_players.offense[0], update_top_team_players.offense[1]],
+                defense: [update_top_team_players.defense[0], update_top_team_players.defense[1]]
+            }
+        })
+
+        // get top players
+        let update_top_players = await espn.fetch_update_top_sport_players("baseball","mlb",2023)
+        console.log(update_top_players)
+        const mlb_top_players = await MLB.findOneAndUpdate({},{top_player_stats: {
+            offensive: {
+                batting_avg: {
+                    name: update_top_players.offense[0][0],
+                    avg: update_top_players.offense[0][1]
+                },
+                home_runs: {
+                    name: update_top_players.offense[1][0],
+                    hr: update_top_players.offense[1][1],
+                },
+                runs_in: {
+                    name: update_top_players.offense[2][0],
+                    rbi: update_top_players.offense[2][1]
+                }
+            },
+            defensive: {
+                wins: {
+                    name: update_top_players.defense[0][0],
+                    w: update_top_players.defense[0][1]
+                },
+                earned_run_avg: {
+                    name: update_top_players.defense[1][0],
+                    era: update_top_players.defense[1][1]
+                },
+                saves: {
+                    name: update_top_players.defense[2][0],
+                    sv: update_top_players.defense[2][1]
+                },
+            }
+        }});
+
+        let update_team_records = await espn.fetch_update_all_teams_records("baseball","mlb") // gets all team array
+        console.log(update_team_records)
+        let mlb_page = await MLB.findOneAndUpdate({},{all_team_stats: update_team_records})
+    } catch (error) {
+        console.log(error)
+    }
     // add to db
 
     // const MLB_update = await MLB.findOne({_id:1})({
@@ -216,6 +216,64 @@ async function update_mlb_page() {
 }
 
 async function update_nba_page() {
+    try {
+        // get top team
+        let update_top_team = await espn.fetch_update_top_team_records("basketball","nba")
+        console.log(update_top_team.team_name)
+        let update_nba_top_team = await NBA.findOneAndUpdate({},{top_team: update_top_team})
+
+        // get top team players
+        let update_top_team_players = await espn.update_top_team_players("basketball", "nba")
+        console.log(update_top_team_players)
+        const update_top_team_playerss = await NBA.findOneAndUpdate({}, {
+            top_team_players_stats: {
+                offense: [update_top_team_players.offense[0], update_top_team_players.offense[1]],
+                defense: [update_top_team_players.defense[0], update_top_team_players.defense[1]]
+            }
+        })
+        // console.log(update_top_team_playerss)
+        // get top players
+        let update_top_players = await espn.fetch_update_top_sport_players("basketball", "nba", 2024)
+        // console.log(update_top_players)
+        const nba_top_players = await NBA.findOneAndUpdate({}, {
+            top_players: {
+                offensive: {
+                    points: {
+                        name: update_top_players.offense[0][0],
+                        pts: update_top_players.offense[0][1]
+                    },
+                    assists: {
+                        name: update_top_players.offense[1][0],
+                        ast: update_top_players.offense[1][1],
+                    },
+                    threepointersmade: {
+                        name: update_top_players.offense[2][0],
+                        yards: update_top_players.offense[2][1]
+                    }
+                },
+                defensive: {
+                    rebounds: {
+                        name: update_top_players.defense[0][0],
+                        reb: update_top_players.defense[0][1]
+                    },
+                    blocks: {
+                        name: update_top_players.defense[1][0],
+                        blk: update_top_players.defense[1][1]
+                    },
+                    steals: {
+                        name: update_top_players.defense[2][0],
+                        stl: update_top_players.defense[2][1]
+                    },
+                }
+            }
+        });
+
+        let update_team_records = await espn.fetch_update_all_teams_records("basketball", "nba") // gets all team array
+        console.log(update_team_records)
+        let nba_page = await NBA.findOneAndUpdate({}, { all_team_stats: update_team_records })
+    } catch (error) {
+        console.log(error)
+    }
     //nba
     // let nba_update = await NBA.create({
     //     all_team_stats: [{
@@ -277,22 +335,19 @@ async function start_auto_update() {
     // setInterval(async () => {
     //     let sports = [["football","nfl","2023"],["baseball","mlb","2024"],["basketball","nba","2024"]]
     //     let news = await update_home_news()
-    //     // for (let index = 0; index < array.length; index++) {
-    //     //     let top_players = await update_top_players()
-    //     //     let top_team_players = await update_top_team_players()
-    //     //     let all_teams = await update_all_teams()
-    //     // }
-
-
-    //     console.log(news)
+        await update_nfl_page()
+        await update_mlb_page()
+        await update_nba_page()
+        // console.log(news)
     // }, 30000);
     // mongoose.connection.close()
 }
 
 async function main() {
     // mongoose.connect(dburi).then(() => console.log("connected")) // comment out when deploying
-    await update_nfl_page()
     // await update_home_news() // update news works
+    // await update_nfl_page()
+    await update_nba_page()
     // mongoose.connection.close()
 }
 if (require.main == module){

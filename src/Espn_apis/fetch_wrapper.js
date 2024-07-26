@@ -9,9 +9,9 @@ const dburi = "mongodb+srv://cn:12345web@web-dev-db.fhkedej.mongodb.net/?retryWr
 
 
 
-async function update_stats() {
-    let new_stats = await get_all_stats.fetch_top_sport_player()
-}
+// async function update_stats() {
+//     let new_stats = await get_all_stats.fetch_top_sport_player()
+// }
 async function update_news(){
     let new_news = await get_all_news.new_fetch()
     return new_news
@@ -64,7 +64,6 @@ if (require.main == module){
 
 module.exports = {
     update_news,
-    update_stats,
     fetch_update_all_teams,
     fetch_update_top_sport_players,
     fetch_update_all_teams_records,
