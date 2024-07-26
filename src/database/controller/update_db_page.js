@@ -12,16 +12,22 @@ mongoose.connect(dburi).then(() => console.log("connected"))
 
 // update home news
 async function update_home_news() {
-    let updates = await espn.update_news()
-    // const updating = await NEWS.findOneAndUpdate({nfl: updates.nfl,mlb: updates.mlb,nba: updates.nba})
-    console.log("update news successful")
-    console.log(updates)
+    try {
+        let updates = await espn.update_news().then((response) => console.log(response))
+        console.log("update news successful")
+        const updating = await NEWS.findOneAndUpdate({},{nfl: updates.nfl,mlb: updates.mlb,nba: updates.nba})
+        
+        return updating
+    } catch (error) {
+        console.log("news fetch unsuccessful")
+    }
 }
 // update top teams
 async function update_top_teams(sport,league,year) {
         try {
-            let update = await get_stats.fetch_top_team(sport,league,year)
+            let update = await espn.fetch_update_top_teams(sport,league,year)
             // const add_top_team_status = await NFL.findOneAndUpdate({},{})
+
         } catch {
             console.log("top team update error")
         }
@@ -39,12 +45,81 @@ async function update_top_sport_players() {
 }
 
 async function update_nfl_page(){
-
+    // get top team
+    let update_top_team = await espn.update_top_team("football","nfl").then(console.log)
+    // get top team players
+    let update_top_team_players = await espn.update_top_team_players("football","nfl")
+    // get top players
+    let update_top_players = await espn.update_top_players("football","nfl","2023")
+    // get all teams records
+    let update_team_records = await espn.fetch_top_team_records("football","nfl")
     // all_teams_stats_array = []
     // let nfl_page = NFL_PAGE.create({
     //     all_team_stats: []
     // }
     // )
+}
+
+async function create_init() {
+    //nfl 
+    // let nfl_init = await NFL.create({
+        // all_team_stats: [{
+        //     team_id: 100,
+        //     team_name: "Temp",
+        //     team_record: {
+        //         wins: 1,
+        //         losses: 1,
+        //         alt: 0
+        //     }
+        // }], // gets array of single nfl teams
+        // top_player_stats: {
+        //     offensive: {
+        //         passing: {
+        //             name: "Temp1",
+        //             yards: 100
+        //         },
+        //         rushing: {
+        //             name: "rtemp1",
+        //             yards: 1002
+        //         },
+        //         receiving: {
+        //             name: "retemp1",
+        //             yards: 870
+        //         }
+        //     },
+        //     defensive: {
+        //         tackles: {
+        //             name: "ttemp1",
+        //             tackles: 100,
+        //         },
+        //         sacks: {
+        //             name: "stemp1",
+        //             sacks: 20
+        //         },
+        //         interceptions: {
+        //             name: "itemp1",
+        //             int: 10
+        //         }
+        //     }
+        // }, // gets top 6 players
+        // top_team_stats: {
+        //     team_id: 100,
+        //     team_name: "Temp_name",
+        //     team_record: {
+        //         wins: 1,
+        //         losses: 1,
+        //         alt: 0
+        //     }
+        // },
+        // top_team_player_stats: {
+        //     offense: ["tempnameof",100],
+        //     defense: ["tempnamedef",99]
+        // },
+
+    // })
+    // console.log(nfl_init)
+
+    //
 }
 
 async function update_mlb_page() {
@@ -56,6 +131,7 @@ async function update_nba_page() {
 }
 
 async function start_auto_update() {
+    mongoose.connect(dburi).then(() => console.log("connected"))
     // setInterval(async () => {
     //     let sports = [["football","nfl","2023"],["baseball","mlb","2024"],["basketball","nba","2024"]]
     //     let news = await update_home_news()
@@ -73,7 +149,8 @@ async function start_auto_update() {
 
 async function main() {
     mongoose.connect(dburi).then(() => console.log("connected"))
-
+    // await update_nfl_page()
+    // await create_init()
     // await update_home_news() // update news works
     mongoose.connection.close()
 }

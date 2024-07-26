@@ -17,14 +17,24 @@ async function update_news(){
     return new_news
 }
 
-async function fetch_all_teams(sport,league){
+// input sport and league and gets back the array of teams in the league
+async function fetch_update_all_teams(sport,league){
     let new_teams = get_all_teams.get_teams_and_id()
-
     return new_teams
 }
+// inputs sport and league and gets the top team record based on season
 async function fetch_top_team_records(sport,league){
-    let new_records = get_all_stats.fetch_top_team_record(sport,league)
+    let new_records = await get_all_stats.fetch_top_team_record(sport,league)
     return new_records
+}
+
+async function fetch_all_teams_and_records() {
+    
+}
+
+async function fetch_update_top_sport_players(sport,league) {
+    let new_top_players = await get_all_stats.fetch_top_sport_player(sport,league) 
+    return new_top_players
 }
 
 //auto updates all api callss 
@@ -52,6 +62,8 @@ if (require.main == module){
 module.exports = {
     update_news,
     update_stats,
+    fetch_update_all_teams,
+    fetch_update_top_sport_players,
     fetch_top_team_records,
 
 }

@@ -45,13 +45,46 @@
                                 <p>Top player stats content goes here. Placeholder content for demonstration purposes.</p>
                                 <table class="table table-striped-columns">
                                     <tr>
+                                        <th>Stat</th>
                                         <th>Name</th>
-                                        <th>stats</th>
+                                        <th>Yards</th>
                                     </tr>
                                     <tr>
                                         <th>Passing</th>
-                                        <td>Mahomes</td>
+                                        <td><%= temp_top_players.offensive.passing.name %></td>
+                                        <td><%= temp_top_players.offensive.passing.yards %></td>
                                     </tr>
+                                    <tr>
+                                        <th>Rushing</th>
+                                        <td><%= temp_top_players.offensive.rushing.name %></td>
+                                        <td><%= temp_top_players.offensive.rushing.yards %></td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Receiving</th>
+                                        <td><%= temp_top_players.offensive.receiving.name %></td>
+                                        <td><%= temp_top_players.offensive.receiving.yards %></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th>Tackles</th>
+                                        <td><%= temp_top_players.defensive.tackles.name %></td>
+                                        <td><%= temp_top_players.defensive.tackles.yards %></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th>Sacks</th>
+                                        <td><%= temp_top_players.defensive.sacks.name %></td>
+                                        <td><%= temp_top_players.defensive.sacks.sacks %></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <th>Interceptions</th>
+                                        <td><%= temp_top_players.defensive.interceptions.name %></td>
+                                        <td><%= temp_top_players.defensive.interceptions.int %></td>
+                                        
+                                    </tr>
+
                                 </table>
                             </div>
                         </div>
@@ -84,11 +117,10 @@
                                     <tbody class="table-group-divider">
                                         <tr>
                                             <!-- implement the for loop here -->
-                                            <td>Chiefs</td>
-                                            <td>11</td>
-                                            <td>6</td>
-                                            <td>0</td>
-                                            <td>.54</td>
+                                            <td><%= temp_top_team_stats.team_name %></td>
+                                            <td><%= temp_top_team_stats.team_record.wins %></td>
+                                            <td><%= temp_top_team_stats.team_record.losses %></td>
+                                            <td><%= temp_top_team_stats.team_record.alt %></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -119,13 +151,13 @@
                                     <tbody>
                                         <tr>
                                             <th>Offense</th>
-                                            <td class="text-dark"><%= temp_team_player_stats.offense.name %></td>
-                                            <td><%= temp_team_player_stats.offense.yards %></td>
+                                            <td class="text-dark"><%= temp_team_player_stats.offense[0] %></td>
+                                            <td><%= temp_team_player_stats.offense[1] %></td>
                                         </tr>
                                         <tr>
                                             <th>Defense</th>
-                                            <td><%= temp_team_player_stats.defense.name %></td>
-                                            <td><%= temp_team_player_stats.defense.tackles %></td>
+                                            <td><%= temp_team_player_stats.defense[0] %></td>
+                                            <td><%= temp_team_player_stats.defense[1] %></td>
                                         </tr>
                                     </tbody>
                                 </table>

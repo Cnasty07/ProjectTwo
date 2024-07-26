@@ -18,7 +18,7 @@ const nfl = new Schema({
             alt: Number
         }
     }], // gets array of single nfl teams
-    top_player_stats: {
+    top_player_stats: [{
         offensive: {
             passing: {
                 name: String,
@@ -47,7 +47,7 @@ const nfl = new Schema({
                 int: Number
             }
         }
-    }, // gets top 6 players
+    }], // gets top 6 players
     top_team_stats:{
         team_id: Number,
         team_name: String,

@@ -69,58 +69,15 @@ app.get('/', async (req, res) => {
     }
 });
 
-app.get('/nfl', (req, res) => {
+app.get('/nfl', async (req, res) => {
   const stats = fetchStats('NFL');
-  let temp_team_player_stats = {
-    offense: {
-      name : "Mahomes",
-      yards: 1000
-    },
-    defense: {
-      name: "Bolton",
-      tackles: 30
-    }
-  }
-  let temp_top_team_stats = {
-    team_id: Number,
-    team_name: "Chiefs",
-    team_record: {
-        wins: 11,
-        losses: 6,
-        alt: 0
-    }
-  }
-  let temp_top_players = {
-    offensive: {
-      passing: {
-          name: "",
-          yards: Number
-      },
-      rushing: {
-          name: String,
-          yards: Number
-      },
-      receiving: {
-          name: String,
-          yards: Number
-      }
-  },
-  defensive: {
-      tackles: {
-          name:String,
-          tackles: Number,
-      },
-      sacks: {
-          name: String,
-          sacks: Number
-      },
-      interceptions: {
-          name: String,
-          int: Number
-      }
-  }
-  }
-  res.render('nfl', { stats , temp_team_player_stats,temp_top_team_stats,temp_top_players,});
+  let nfl = await mongoose.model("NFL_DB")
+  let new_page = await nfl.findOne().sort({_id:1})
+  console.log(new_page)
+  let temp_team_player_stats = new_page.top_team_player_stats // make sure to update whole array is added
+  let temp_top_team_stats = new_page.top_team_stats
+  let temp_top_players = new_page.top_player_stats[0]
+  res.render('nfl', { stats , temp_team_player_stats,temp_top_team_stats,temp_top_players});
 });
 
 app.get('/nba', (req, res) => {
