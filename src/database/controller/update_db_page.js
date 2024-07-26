@@ -332,14 +332,14 @@ async function update_nba_page() {
 }
 
 async function start_auto_update() {
-    // setInterval(async () => {
-    //     let sports = [["football","nfl","2023"],["baseball","mlb","2024"],["basketball","nba","2024"]]
-    //     let news = await update_home_news()
+    setInterval(async () => {
+        let sports = [["football","nfl","2023"],["baseball","mlb","2024"],["basketball","nba","2024"]]
+        let news = await update_home_news()
         await update_nfl_page()
         await update_mlb_page()
         await update_nba_page()
-        // console.log(news)
-    // }, 30000);
+        console.log(news)
+    }, 30000);
     // mongoose.connection.close()
 }
 
