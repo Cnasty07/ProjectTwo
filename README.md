@@ -5,7 +5,7 @@
 # IMPORTANT
 
 - Problems fixed except for search bar and some front end layouts. If youre coming from the blackboard submission comment. disregard its fixed.
-
+- search will be implemented tomorrow sometime
 ## Description
 
 This is a dashboard for espn nfl/nba/mlb stats that constantly update using mongoose, ejs, express, npm, javascript, and others.
