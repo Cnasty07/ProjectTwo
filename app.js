@@ -150,4 +150,4 @@ if (require.main == module){
   console.log("main function")
 }
 
-// module.exports = app;
+module.exports = app;
